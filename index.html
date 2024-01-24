@@ -4,34 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        function undo() {
-    // Check if the event is triggering
-    console.log('Mouse left image');
-
-    // Reset the background image URL to the original value
-    document.getElementById('image').style.backgroundImage = "url('')";
-
-    // Reset the text of the element with the id of 'image'
-    document.getElementById('image').textContent = 'Hover over an image below to display here.';
-}
-
-        function upDate() {
-    // Check if the event is triggering
-    console.log('Mouse over image');
-
-    // Print information about the previewPic variable
-    console.log('Alt: ' + previewPic.alt);
-    console.log('Source: ' + previewPic.src);
-
-    // Change the text of the element with the id of 'image'
-    document.getElementById('image').textContent = previewPic.alt;
-
-    // Change the background image of the element with the id of 'image'
-    document.getElementById('image').style.backgroundImage = 'url(' + previewPic.src + ')';
-}
-    </script>
-    
     <style>
         body {
             display: flex;
@@ -54,17 +26,48 @@
         }
     </style>
     <title>Two Pictures</title>
+    <script>
+        function undo() {
+            // Check if the event is triggering
+            console.log('Mouse left image');
+
+            // Reset the background image URL to the original value
+            document.getElementById('image').style.backgroundImage = "url('')";
+
+            // Reset the text of the element with the id of 'image'
+            document.getElementById('image').textContent = 'Hover over an image below to display here.';
+        }
+
+        function upDate(previewPic) {
+            // Check if the event is triggering
+            console.log('Mouse over image');
+
+            // Print information about the previewPic variable
+            console.log('Alt: ' + previewPic.alt);
+            console.log('Source: ' + previewPic.src);
+
+            // Change the text of the element with the id of 'image'
+            document.getElementById('image').textContent = previewPic.alt;
+
+            // Change the background image of the element with the id of 'image'
+            document.getElementById('image').style.backgroundImage = 'url(' + previewPic.src + ')';
+        }
+    </script>
 </head>
 
 <body>
-    <div class="image-container" onmouseover="upDate()" onmouseout="undo()">
+    <div class="image-container" onmouseover="upDate(this)" onmouseout="undo()">
         <img src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Picture 1">
         <p>Picture 1</p>
     </div>
 
-    <div class="image-container" onmouseover="upDate()" onmouseout="undo()">
+    <div class="image-container" onmouseover="upDate(this)" onmouseout="undo()">
         <img src="https://i.pinimg.com/736x/04/ce/7a/04ce7a9e9c8ece38f6402432644513b6.jpg" alt="Picture 2">
         <p>Picture 2</p>
+    </div>
+
+    <div id="image" style="text-align: center; margin-top: 20px;">
+        Hover over an image below to display here.
     </div>
 </body>
 
